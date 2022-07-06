@@ -52,4 +52,14 @@ export class CardsService {
       decksRef.add({ ...obj });
     }
   }
+
+  delete(deckId: string, cardId: string) {
+    const cardRef = this.db
+      .collection('cards')
+      .doc(deckId)
+      .collection('cards')
+      .doc(cardId);
+
+    cardRef.delete();
+  }
 }

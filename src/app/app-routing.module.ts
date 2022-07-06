@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '@shared/guards/auth.guard';
+import { LoginComponent } from '@auth/pages/login/login.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,10 @@ const routes: Routes = [
     path: 'practices',
     loadChildren: () =>
       import('./practices/practices.module').then((m) => m.PracticesModule),
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
   },
 ];
 

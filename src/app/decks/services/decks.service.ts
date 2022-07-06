@@ -44,4 +44,18 @@ export class DecksService {
       decksRef.add({ ...obj });
     }
   }
+
+  delete(uid: string, deckId: string) {
+    const cardsRef = this.db.collection('cards').doc(deckId);
+
+    cardsRef.delete();
+
+    const decksRef = this.db
+      .collection('decks')
+      .doc(uid)
+      .collection('decks')
+      .doc(deckId);
+
+    decksRef.delete();
+  }
 }

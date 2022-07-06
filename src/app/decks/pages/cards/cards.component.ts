@@ -42,6 +42,11 @@ export class CardsComponent implements OnInit {
     this.router.navigate(['/decks']);
   }
 
+  onDelete(cardId: string): void {
+    const card: Card = this.cards.find((c) => c.cardId === cardId) as Card;
+    this.cardsSvc.delete(this.deckId, card.cardId ?? '');
+  }
+
   onEdit(cardId: string): void {
     const card: Card = this.cards.find((c) => c.cardId === cardId) as Card;
     const dialogRef = this.dialog.open(CardEditorComponent, {
