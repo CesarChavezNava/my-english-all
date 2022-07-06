@@ -1,28 +1,32 @@
-<h2 mat-dialog-title>Practice</h2>
+<h2 mat-dialog-title>Practice Configuration</h2>
 <div mat-dialog-content>
-    <div class="row" [formGroup]="settings">
+    <div class="conatiner-config row center-xs" [formGroup]="settings">
         <div class="col-xs-6">
             <div class="box">
-                <span><strong>Front</strong></span><br /><br />
-                <mat-checkbox formControlName="name">Name</mat-checkbox><br />
-                <mat-checkbox formControlName="translate">Translate</mat-checkbox><br />
-                <mat-checkbox formControlName="meaning">Meaning</mat-checkbox><br />
-                <mat-checkbox formControlName="example">Example</mat-checkbox><br />
-                <mat-checkbox formControlName="image">Image</mat-checkbox><br />
+                <div class="row start-xs">
+                    <div class="col-xs-12"><strong>Card Front</strong></div>
+                    <div class="col-xs-12"><mat-checkbox formControlName="translate">Translate</mat-checkbox></div>
+                    <div class="col-xs-12"><mat-checkbox formControlName="meaning">Meaning</mat-checkbox></div>
+                    <div class="col-xs-12"><mat-checkbox formControlName="example">Example</mat-checkbox></div>
+                    <div class="col-xs-12"><mat-checkbox formControlName="image">Image</mat-checkbox></div>
+                </div>
             </div>
         </div>
         <div class="col-xs-6">
             <div class="box">
-                <span><strong>Back</strong></span><br /><br />
-                <mat-radio-group aria-label="Select an option" formControlName="options">
-                    <mat-radio-button value="NAME">Name</mat-radio-button><br /><br />
-                    <mat-radio-button value="TRANSLATE">Translate</mat-radio-button><br /><br />
-                </mat-radio-group>
+                <div class="row end-xs">
+                    <div class="col-xs-12"><strong>Card Back</strong></div>
+                    <div class="col-xs-12">
+                        <mat-radio-group aria-label="Select an option" formControlName="options">
+                            <mat-radio-button value="NAME">Name</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
-<div mat-dialog-actions>
+<div mat-dialog-actions align="end">
   <button mat-button (click)="onNoClick()">No Thanks</button>
   <button mat-button (click)="onStart()" cdkFocusInitial>Start</button>
 </div>
