@@ -1,0 +1,28 @@
+<h2 mat-dialog-title>Practice</h2>
+<div mat-dialog-content>
+    <div class="row" [formGroup]="settings">
+        <div class="col-xs-6">
+            <div class="box">
+                <span><strong>Front</strong></span><br /><br />
+                <mat-checkbox formControlName="name">Name</mat-checkbox><br />
+                <mat-checkbox formControlName="translate">Translate</mat-checkbox><br />
+                <mat-checkbox formControlName="meaning">Meaning</mat-checkbox><br />
+                <mat-checkbox formControlName="example">Example</mat-checkbox><br />
+                <mat-checkbox formControlName="image">Image</mat-checkbox><br />
+            </div>
+        </div>
+        <div class="col-xs-6">
+            <div class="box">
+                <span><strong>Back</strong></span><br /><br />
+                <mat-radio-group aria-label="Select an option" formControlName="options">
+                    <mat-radio-button value="NAME">Name</mat-radio-button><br /><br />
+                    <mat-radio-button value="TRANSLATE">Translate</mat-radio-button><br /><br />
+                </mat-radio-group>
+            </div>
+        </div>
+    </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button (click)="onStart()" cdkFocusInitial>Start</button>
+</div>

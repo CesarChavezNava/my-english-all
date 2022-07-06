@@ -1,0 +1,17 @@
+<app-top-bar></app-top-bar>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let deck of decks">
+            <div class="box">
+                <app-deck [deck]="deck"></app-deck>
+            </div>
+        </div>
+    </div>
+    <div class="row end-xs bottom-xs">
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="box">
+                <button mat-flat-button color="primary" (click)="onNew()">New Deck</button>
+            </div>
+        </div>
+    </div>
+</div>

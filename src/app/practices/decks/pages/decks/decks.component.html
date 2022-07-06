@@ -1,0 +1,71 @@
+<app-top-bar></app-top-bar>
+<div class="container">
+    <mat-card class="mat-elevation-z8">
+        <div [formGroup]="settings">
+            <div class="container-card row center-xs" [style.visibility]="settings.get('name')?.value ? 'visible' : 'hidden'">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <span class="name"><strong>{{ card.name }}</strong></span>
+                    </div>
+                </div>
+            </div>
+            <div class="container-card row center-xs" [style.visibility]="settings.get('translate')?.value ? 'visible' : 'hidden'">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <span class="translate"><strong>{{ card.translate }}</strong></span>
+                    </div>
+                </div>
+            </div>
+            <div class="container-card row center-xs" [style.visibility]="settings.get('meaning')?.value ? 'visible' : 'hidden'">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <span><strong>{{ card.meaning }}</strong></span>
+                    </div>
+                </div>
+            </div>
+            <div class="container-card row center-xs" [style.visibility]="settings.get('example')?.value ? 'visible' : 'hidden'">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <span><strong>{{ card.example }}</strong></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-card row center-xs" [formGroup]="settings">
+            <div class="col-xs-12">
+                <div class="box">
+                    <p>
+                        <mat-checkbox formControlName="name">Name</mat-checkbox>&nbsp;&nbsp;
+                        <mat-checkbox formControlName="translate">Translate</mat-checkbox>&nbsp;&nbsp;
+                        <mat-checkbox formControlName="meaning">Meaning</mat-checkbox>&nbsp;&nbsp;
+                        <mat-checkbox formControlName="example">Example</mat-checkbox>&nbsp;&nbsp;
+                        <mat-checkbox formControlName="image">Image</mat-checkbox>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </mat-card>
+    <div class="container-answer row center-xs bottom-xs">
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="box">
+                <mat-form-field appearance="outline">
+                    <mat-label>Answer</mat-label>
+                    <input matInput placeholder="Put your answer" autocomplete="off" [(ngModel)]="answer">
+                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+    <div class="row end-xs bottom-xs">
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="box">
+                <button mat-flat-button color="primary" (click)="onNext()">Next Card</button>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="box">
+                <button mat-flat-button color="warn" (click)="onCancel()">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>

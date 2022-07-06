@@ -1,0 +1,50 @@
+::ng-deep.success-snackbar  {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+
+    .mat-button-wrapper {
+        color: #155724;
+    }
+}
+
+::ng-deep.error-snackbar  {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+
+    .mat-button-wrapper {
+        color: #721c24;
+    }
+}
+
+.container {
+    padding: 2%;
+    width: 95%;
+}
+
+.container-answer {
+    margin: 5rem 0 2rem 0;
+}
+
+.container-card {
+    margin: 2rem 0;
+}
+
+.name, .translate {
+    font-size: 78px;
+    margin: 1rem 0;
+}
+
+.mat-flat-button {
+    margin: 1rem 0;
+    width: 100%;
+}
+
+.mat-form-field {
+    width: 100%;
+}
+
+.mat-mini-fab{
+    margin: 0.5rem;
+}

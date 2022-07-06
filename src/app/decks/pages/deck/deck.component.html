@@ -1,0 +1,11 @@
+<mat-card class="mat-elevation-z8">
+    <mat-card-title>{{ deck.name }}</mat-card-title>
+    <mat-card-content>
+        <p>{{ deck.description }}</p>
+    </mat-card-content>
+    <mat-card-actions align="end">
+        <button mat-button (click)="onPractice()">Practice</button>
+        <button mat-button (click)="onView()">View</button>
+        <button mat-button (click)="onEdit()">Edit</button>
+    </mat-card-actions>
+</mat-card>
