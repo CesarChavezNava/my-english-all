@@ -17,6 +17,10 @@ export class TopBarComponent implements OnInit {
     this.authSvc.getCurrentUser().subscribe((_user) => (this.user = _user));
   }
 
+  onHome(): void {
+    this.router.navigate(['/home']);
+  }
+
   async logout() {
     await this.authSvc.logout();
     this.router.navigate(['/']);

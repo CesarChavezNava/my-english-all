@@ -1,0 +1,15 @@
+ul {
+    list-style: none;
+}
+  
+.good {
+    ul li:before {
+        content: '✓';
+    }
+}
+
+.bad {
+    ul li:before {
+        content: 'X';
+    }
+}

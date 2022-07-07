@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { CardsService } from '@decks/services/cards.service';
+import { ScoreResultComponent } from '@practices/decks/components/score-result/score-result.component';
 import { Card } from '@shared/models/card.model';
 import { DeckConfig } from '@shared/models/deck-config.model';
+import { DeckScore } from '@shared/models/deck-score.model';
 
 @Component({
   selector: 'app-decks',
@@ -24,13 +27,15 @@ export class DecksComponent implements OnInit {
   cards: Card[] = [];
   card: Card = {} as Card;
   config: DeckConfig = {} as DeckConfig;
+  score: DeckScore = { total: 0, good: [], bad: [] } as DeckScore;
 
   constructor(
     private cardsSvc: CardsService,
     private formBuilder: FormBuilder,
     private router: Router,
     private snackBar: MatSnackBar,
-    public activatedRoute: ActivatedRoute
+    public activatedRoute: ActivatedRoute,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -41,6 +46,7 @@ export class DecksComponent implements OnInit {
       this.cardsSvc.getAll(deckId).subscribe((_cards) => {
         this.cards = _cards;
         this.card = _cards[0];
+        this.score.total = this.cards.length - 1;
       });
     });
   }
@@ -54,21 +60,32 @@ export class DecksComponent implements OnInit {
   onNext(): void {
     if (this.answer.toLowerCase() === this.card.name.toLowerCase()) {
       this.snackBar.open('Correct!!', 'X', {
-        duration: 2000,
+        duration: 1000,
         verticalPosition: 'top',
         panelClass: ['success-snackbar'],
       });
+
+      this.score.good.push(this.card);
     } else {
       this.snackBar.open(`Incorrect, the answer is ${this.card.name}`, 'X', {
-        duration: 2000,
+        duration: 1000,
         verticalPosition: 'top',
         panelClass: ['error-snackbar'],
       });
+
+      this.score.bad.push(this.card);
     }
 
     this.answer = '';
     const index: number = this.cards.indexOf(this.card);
-    if (index <= this.cards.length) {
+    if (index === this.score.total) {
+      this.dialog.open(ScoreResultComponent, {
+        width: '400px',
+        data: this.score,
+      });
+    }
+
+    if (index < this.cards.length - 1) {
       this.card = this.cards[index + 1];
     }
   }
